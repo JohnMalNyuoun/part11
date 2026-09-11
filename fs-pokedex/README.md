@@ -15,3 +15,4 @@ Start by running `npm install` inside the project folder
 
 ## Live Demo
 
+The application is deployed on Render: [Pokemon live app](https://part11-tp2o.onrender.com/)
