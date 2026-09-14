@@ -4,7 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 5001
 
 app.use(express.static('dist'))
-
+// this is a comment made by me to check the working of the new branch created
 app.get('/health', (req, res) => {
   res.send('ok')
 })
