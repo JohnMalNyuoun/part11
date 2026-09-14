@@ -8,7 +8,7 @@ app.use(express.static('dist'))
 app.get('/health', (req, res) => {
   res.send('ok')
 })
-
+// Adding protection to your main branch
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`server started on port ${PORT}`)
 })
