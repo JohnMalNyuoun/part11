@@ -40,19 +40,19 @@ jobs:
 
       - name: Notify Build Failure
         if: ${{ failure() }}
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: error
-          details: 'Build failed! Commit: ${{ github.sha }} by ${{ github.actor }} - "${{ github.event.head_commit.message }}"'
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{"content": "Build failed! Commit: ${{ github.sha }} by ${{ github.actor }}"}' \
+          ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Notify Deployment Success
         if: ${{ success() && github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: info
-          details: 'A new version of Pokédex was successfully deployed to Render!'
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{"content": "A new version of Pokédex was successfully deployed to Render!"}' \
+          ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
     needs: [simple_deployment_pipeline]
