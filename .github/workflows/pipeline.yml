@@ -38,6 +38,22 @@ jobs:
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
 
+      - name: Notify Build Failure
+        if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          details: 'Build failed! Commit: ${{ github.sha }} by ${{ github.actor }} - "${{ github.event.head_commit.message }}"'
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Notify Deployment Success
+        if: ${{ success() && github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: 'A new version of Pokédex was successfully deployed to Render!'
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-latest
