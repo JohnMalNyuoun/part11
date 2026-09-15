@@ -12,7 +12,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  simple_deployment_pipeline:
+  build_and_test:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -34,18 +34,22 @@ jobs:
         run: npm test
       - name: Run Playwright E2E tests
         run: npm run test:e2e
+
+  deploy:
+    needs: [build_and_test]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./fs-pokedex
+    steps:
       - name: Trigger deployment
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
 
-      - name: Notify Build Failure
-        if: ${{ failure() }}
-        run: |
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d '{"content": "Build failed! Commit: ${{ github.sha }} by ${{ github.actor }}"}' \
-          ${{ secrets.DISCORD_WEBHOOK }}
-
+  notify_success:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    steps:
       - name: Notify Deployment Success
         if: ${{ success() && github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         run: |
@@ -54,8 +58,20 @@ jobs:
           -d '{"content": "A new version of Pokédex was successfully deployed to Render!"}' \
           ${{ secrets.DISCORD_WEBHOOK }}
 
+  notify_failure:
+    needs: [build_and_test, deploy]
+    if: ${{ failure() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Build Failure
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{"content": "Build failed! Commit: ${{ github.sha }} by ${{ github.actor }}"}' \
+          ${{ secrets.DISCORD_WEBHOOK }}
+
   tag_release:
-    needs: [simple_deployment_pipeline]
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
