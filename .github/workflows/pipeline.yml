@@ -38,9 +38,6 @@ jobs:
   deploy:
     needs: [build_and_test]
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./fs-pokedex
     steps:
       - name: Trigger deployment
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
