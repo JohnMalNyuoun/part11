@@ -16,6 +16,7 @@ Start by running `npm install` inside the project folder
 ## Live Demo
 
 The application is deployed on Render: [Pokemon live app](https://part11-tp2o.onrender.com/)
+(https://github.com/JohnMalNyuoun/part11)
 
 ## Exercise 11.21: Custom Pipeline Repository
 The repository with the custom CI/CD pipeline is available at:
