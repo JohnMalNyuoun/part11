@@ -16,3 +16,14 @@ Start by running `npm install` inside the project folder
 ## Live Demo
 
 The application is deployed on Render: [Pokemon live app](https://part11-tp2o.onrender.com/)
+
+## Exercise 11.21: Custom Pipeline Repository
+The repository with the custom CI/CD pipeline is available at:
+https://github.com/JohnMalNyuoun/fullstack-own-pipeline
+**Live Application URL:** https://fullstack-own-pipeline.onrender.com
+
+# Custom Full Stack Pipeline App
+
+This repository contains the monorepo setup and GitHub Actions CI/CD pipeline for Exercise 11.21.
+
+* **Live App:** https://fullstack-own-pipeline.onrender.com
