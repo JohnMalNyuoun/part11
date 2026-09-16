@@ -19,5 +19,8 @@ Start by running `npm install` inside the project folder
 
 * **Deployed Pokedex App:** https://part11-tp2o.onrender.com
 * **App Repository (Pokedex):** https://github.com/JohnMalNyuoun/part11
-* **Custom Pipeline Repository (Exercises 11.20 - 11.22):** https://github.com/JohnMalNyuoun/fullstack-own-pipeline
+* **Custom Pipeline Repository (Exercises 11.20 - https://github.com/JohnMalNyuoun/fullstack-own-pipeline/commit/b09d3e99e1d9547c7b588debc03fe4f178033876):**this was the final of this exercise of 11.20/
+**Custom Pipeline Repository (Exercises 11.21 https://github.com/JohnMalNyuoun/fullstack-own-pipeline/commit/7587a5447fa3cdee338e4e67df92db23ae07aedf):**this is the exercises 11.22/
+
+the reason why there are not ponting directly to the code for exercise is because there was series of debuging
 * **Live Custom Pipeline Application:** https://fullstack-own-pipeline.onrender.com
