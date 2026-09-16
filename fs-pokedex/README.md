@@ -13,18 +13,11 @@ Start by running `npm install` inside the project folder
 `npm run start-prod` to run your production build
 
 
-## Live Demo
+# Full Stack Open - Part 11 Submission
 
-The application is deployed on Render: [Pokemon live app](https://part11-tp2o.onrender.com/)
-(https://github.com/JohnMalNyuoun/part11)
+## Required Links
 
-## Exercise 11.21: Custom Pipeline Repository
-The repository with the custom CI/CD pipeline is available at:
-https://github.com/JohnMalNyuoun/fullstack-own-pipeline
-**Live Application URL:** https://fullstack-own-pipeline.onrender.com
-
-# Custom Full Stack Pipeline App
-
-This repository contains the monorepo setup and GitHub Actions CI/CD pipeline for Exercise 11.21.
-
-* **Live App:** https://fullstack-own-pipeline.onrender.com
+* **Deployed Pokedex App:** https://part11-tp2o.onrender.com
+* **App Repository (Pokedex):** https://github.com/JohnMalNyuoun/part11
+* **Custom Pipeline Repository (Exercises 11.20 - 11.22):** https://github.com/JohnMalNyuoun/fullstack-own-pipeline
+* **Live Custom Pipeline Application:** https://fullstack-own-pipeline.onrender.com
